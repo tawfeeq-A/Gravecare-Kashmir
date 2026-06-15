@@ -61,6 +61,43 @@
       background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.35) 70%);
     }
 
+    .chinar-field {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      overflow: hidden;
+      opacity: 0.38;
+    }
+
+    .chinar-leaf {
+      position: absolute;
+      color: rgba(217,180,91,0.28);
+      transform-origin: center;
+      animation: chinarDrift 18s ease-in-out infinite;
+      will-change: transform;
+    }
+
+    .chinar-leaf:nth-child(1) { width: 42px; left: 7%; top: 19%; animation-delay: -2s; }
+    .chinar-leaf:nth-child(2) { width: 30px; right: 10%; top: 26%; color: rgba(53,208,127,0.20); animation-delay: -7s; }
+    .chinar-leaf:nth-child(3) { width: 54px; left: 12%; bottom: 14%; color: rgba(217,180,91,0.18); animation-delay: -11s; }
+    .chinar-leaf:nth-child(4) { width: 36px; right: 16%; bottom: 18%; animation-delay: -4s; }
+
+    @keyframes chinarDrift {
+      0%, 100% { transform: translate3d(0,0,0) rotate(-8deg); }
+      50% { transform: translate3d(10px,-14px,0) rotate(9deg); }
+    }
+
+    .hero-chinar-mark {
+      display: inline-flex;
+      width: 30px;
+      height: 34px;
+      margin-right: 10px;
+      vertical-align: middle;
+      color: var(--gold);
+      opacity: 0.9;
+    }
+
     a { color: inherit; text-decoration: none; }
     button, input, textarea { font-family: inherit; }
 
@@ -331,95 +368,6 @@
     }
 
     section { padding: 105px 0; position: relative; content-visibility: auto; contain-intrinsic-size: 900px; }
-
-    .kashmir-context {
-      padding: 30px 0 8px;
-      margin-top: -34px;
-      position: relative;
-      z-index: 3;
-      content-visibility: visible;
-    }
-
-    .kashmir-context-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      perspective: 1100px;
-    }
-
-    .kashmir-context-card {
-      position: relative;
-      overflow: hidden;
-      min-height: 118px;
-      padding: 20px;
-      border-radius: 26px;
-      border: 1px solid rgba(217,180,91,0.24);
-      background:
-        linear-gradient(135deg, rgba(217,180,91,0.13), rgba(255,255,255,0.055)),
-        radial-gradient(circle at 12% 20%, rgba(53,208,127,0.13), transparent 42%);
-      box-shadow: 0 20px 58px rgba(0,0,0,0.24);
-      transform-style: preserve-3d;
-    }
-
-    .kashmir-context-card::before {
-      content: '';
-      position: absolute;
-      left: 18px;
-      right: 18px;
-      top: 14px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(217,180,91,0.88), transparent);
-      opacity: 0.75;
-    }
-
-    .kashmir-context-icon {
-      font-size: 28px;
-      margin-bottom: 10px;
-      filter: drop-shadow(0 0 14px rgba(217,180,91,0.22));
-    }
-
-    .kashmir-context-card strong {
-      display: block;
-      margin-bottom: 6px;
-      color: var(--text);
-      font-size: 15px;
-      letter-spacing: -0.2px;
-    }
-
-    .kashmir-context-card p {
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.55;
-    }
-
-    .kashmir-silhouette {
-      position: absolute;
-      inset: auto 0 0 0;
-      height: 95px;
-      pointer-events: none;
-      opacity: 0.18;
-      background:
-        linear-gradient(135deg, transparent 0 32%, rgba(217,180,91,0.50) 32% 34%, transparent 34%),
-        linear-gradient(45deg, transparent 0 42%, rgba(53,208,127,0.42) 42% 44%, transparent 44%);
-      mask-image: linear-gradient(to top, #000, transparent);
-    }
-
-    .qabristan-arches {
-      position: absolute;
-      right: 18px;
-      bottom: 12px;
-      display: flex;
-      gap: 7px;
-      opacity: 0.16;
-    }
-
-    .qabristan-arches span {
-      width: 17px;
-      height: 28px;
-      border: 1px solid rgba(217,180,91,0.85);
-      border-radius: 14px 14px 4px 4px;
-      display: block;
-    }
 
     .section-head { text-align: center; max-width: 780px; margin: 0 auto 48px; }
     .tag { color: var(--green); font-weight: 900; text-transform: uppercase; letter-spacing: 1.6px; font-size: 13px; margin-bottom: 10px; }
@@ -710,11 +658,11 @@
       -moz-osx-font-smoothing: grayscale;
     }
     .hero-copy-wrap {
-      animation: heroRise 1.05s cubic-bezier(.2,.8,.2,1) both;
+      animation: heroRise 0.55s ease-out both;
     }
 
     .orbital-card {
-      animation: orbitEnter 1.1s cubic-bezier(.2,.8,.2,1) 0.15s both;
+      animation: orbitEnter 0.65s ease-out 0.05s both;
     }
 
     .planet {
@@ -841,13 +789,13 @@
     }
 
     @keyframes heroRise {
-      from { opacity: 0; transform: translateY(40px) translateZ(-80px) rotateX(8deg); filter: blur(10px); }
-      to { opacity: 1; transform: translateY(0) translateZ(0) rotateX(0); filter: blur(0); }
+      from { opacity: 0; transform: translate3d(0,18px,0); }
+      to { opacity: 1; transform: translate3d(0,0,0); }
     }
 
     @keyframes orbitEnter {
-      from { opacity: 0; transform: translateY(60px) rotateY(-18deg) scale(0.92); filter: blur(12px); }
-      to { opacity: 1; transform: translateY(0) rotateY(0) scale(1); filter: blur(0); }
+      from { opacity: 0; transform: translate3d(0,24px,0) scale(0.985); }
+      to { opacity: 1; transform: translate3d(0,0,0) scale(1); }
     }
 
     @keyframes planetPulse {
@@ -1081,7 +1029,6 @@
       .hero-grid, .cta-box { grid-template-columns: 1fr; }
       .orbital-card { min-height: 460px; }
       .gallery-wrap, .steps, .admin-media-list { grid-template-columns: repeat(2, 1fr); }
-      .kashmir-context-grid { grid-template-columns: 1fr; }
       .service-card { grid-template-columns: 1fr; }
       .nav-links a:not(.keep), .admin-open span { display: none; }
     }
@@ -1122,6 +1069,19 @@
   </style>
 </head>
 <body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="chinarLeaf" viewBox="0 0 80 90">
+      <path d="M40 86 C37 73 27 66 18 57 C7 46 9 31 23 31 C17 19 27 9 38 18 C40 8 53 8 55 20 C68 15 75 30 66 43 C75 47 70 63 55 64 C51 74 45 79 40 86Z" fill="currentColor"/>
+      <path d="M40 84 C40 62 39 42 39 20" stroke="rgba(255,255,255,0.32)" stroke-width="1.3" fill="none"/>
+      <path d="M39 50 C29 45 20 39 14 32 M41 52 C53 45 62 38 70 30 M39 65 C30 62 22 58 14 53 M42 66 C51 62 59 58 68 52" stroke="rgba(255,255,255,0.24)" stroke-width="1" fill="none"/>
+    </symbol>
+  </svg>
+  <div class="chinar-field" aria-hidden="true">
+    <svg class="chinar-leaf"><use href="#chinarLeaf"></use></svg>
+    <svg class="chinar-leaf"><use href="#chinarLeaf"></use></svg>
+    <svg class="chinar-leaf"><use href="#chinarLeaf"></use></svg>
+    <svg class="chinar-leaf"><use href="#chinarLeaf"></use></svg>
+  </div>
   <div class="progress" id="progress"></div>
 
   <nav class="nav" aria-label="Main navigation">
@@ -1142,7 +1102,7 @@
     <header class="scene" id="home">
       <div class="container hero-grid">
         <div class="hero-copy-wrap" data-depth="-80">
-          <div class="eyebrow"><span></span> <span id="copyEyebrow">Grave maintenance done with care and precision.</span></div>
+          <div class="eyebrow"><svg class="hero-chinar-mark" aria-hidden="true"><use href="#chinarLeaf"></use></svg><span></span> <span id="copyEyebrow">Grave maintenance done with care and precision.</span></div>
           <h1><span id="heroTitle" class="gradient-text">Your family's resting place, maintained with dignity.</span></h1>
           <p class="hero-copy" id="heroSubtitle">We clean, align, and restore graves for families who want to keep resting places in proper condition. Send us a WhatsApp message to start.</p>
           <div class="cta-row">
@@ -1170,31 +1130,6 @@
         </div>
       </div>
     </header>
-
-    <section class="kashmir-context" aria-label="Kashmir qabristan service details">
-      <div class="container">
-        <div class="kashmir-context-grid">
-          <div class="kashmir-context-card reveal" data-depth="22">
-            <div class="kashmir-context-icon">🍁</div>
-            <strong>For Kashmir's qabristans</strong>
-            <p>Respectful upkeep for graves in Srinagar cemeteries, family plots and local qabristans.</p>
-            <div class="qabristan-arches" aria-hidden="true"><span></span><span></span><span></span></div>
-          </div>
-          <div class="kashmir-context-card reveal" data-depth="18">
-            <div class="kashmir-context-icon">🏔️</div>
-            <strong>Local terrain, local care</strong>
-            <p>Work planned around Kashmir's soil, seasons, overgrowth and stone/floor conditions.</p>
-            <div class="kashmir-silhouette" aria-hidden="true"></div>
-          </div>
-          <div class="kashmir-context-card reveal" data-depth="20">
-            <div class="kashmir-context-icon">🪦</div>
-            <strong>Dignity first</strong>
-            <p>Cleaning, alignment and repairs are handled with restraint, privacy and family confirmation.</p>
-            <div class="qabristan-arches" aria-hidden="true"><span></span><span></span></div>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <section id="services">
       <div class="container">
@@ -2353,5 +2288,6 @@
       initAdmin();
     })();
   </script>
-</body>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a0c24e4bb81da7c1',t:'MTc4MTUzNDE3NA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
