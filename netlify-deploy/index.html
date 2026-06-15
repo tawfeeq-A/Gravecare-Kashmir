@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Grave Care Services | 3D Maintenance Landing Page</title>
   <meta name="description" content="Respectful graveyard maintenance services with WhatsApp booking, gallery, videos, and admin controls." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20100%20100%27%3E%0A%20%20%3Crect%20width%3D%27100%27%20height%3D%27100%27%20rx%3D%2722%27%20fill%3D%27%2307110d%27%2F%3E%0A%20%20%3Ccircle%20cx%3D%2772%27%20cy%3D%2725%27%20r%3D%2713%27%20fill%3D%27%23d9b45b%27%2F%3E%0A%20%20%3Ccircle%20cx%3D%2777%27%20cy%3D%2721%27%20r%3D%2713%27%20fill%3D%27%2307110d%27%2F%3E%0A%20%20%3Cpath%20d%3D%27M30%2078V43c0-16%2010-27%2025-27s25%2011%2025%2027v35z%27%20fill%3D%27%2310251a%27%20stroke%3D%27%23d9b45b%27%20stroke-width%3D%275%27%20stroke-linejoin%3D%27round%27%2F%3E%0A%20%20%3Cpath%20d%3D%27M42%2048h26M42%2061h26%27%20stroke%3D%27%2335d07f%27%20stroke-width%3D%275%27%20stroke-linecap%3D%27round%27%20opacity%3D%27.88%27%2F%3E%0A%20%20%3Cpath%20d%3D%27M19%2082h62%27%20stroke%3D%27%23d9b45b%27%20stroke-width%3D%276%27%20stroke-linecap%3D%27round%27%2F%3E%0A%20%20%3Cpath%20d%3D%27M25%2088h50%27%20stroke%3D%27%2335d07f%27%20stroke-width%3D%275%27%20stroke-linecap%3D%27round%27%20opacity%3D%27.75%27%2F%3E%0A%3C%2Fsvg%3E" />
   <style>
     :root {
       --bg: #070d0a;
@@ -61,44 +62,8 @@
       background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.35) 70%);
     }
 
-    .chinar-field {
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      pointer-events: none;
-      overflow: hidden;
-      opacity: 0.38;
-    }
-
-    .chinar-leaf {
-      position: absolute;
-      color: rgba(217,180,91,0.28);
-      transform-origin: center;
-      animation: chinarDrift 18s ease-in-out infinite;
-      will-change: transform;
-    }
-
-    .chinar-leaf:nth-child(1) { width: 42px; left: 7%; top: 19%; animation-delay: -2s; }
-    .chinar-leaf:nth-child(2) { width: 30px; right: 10%; top: 26%; color: rgba(53,208,127,0.20); animation-delay: -7s; }
-    .chinar-leaf:nth-child(3) { width: 54px; left: 12%; bottom: 14%; color: rgba(217,180,91,0.18); animation-delay: -11s; }
-    .chinar-leaf:nth-child(4) { width: 36px; right: 16%; bottom: 18%; animation-delay: -4s; }
-
-    @keyframes chinarDrift {
-      0%, 100% { transform: translate3d(0,0,0) rotate(-8deg); }
-      50% { transform: translate3d(10px,-14px,0) rotate(9deg); }
-    }
-
-    .hero-chinar-mark {
-      display: inline-flex;
-      width: 30px;
-      height: 34px;
-      margin-right: 10px;
-      vertical-align: middle;
-      color: var(--gold);
-      opacity: 0.9;
-    }
-
     a { color: inherit; text-decoration: none; }
+    a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation; user-select: none; }
     button, input, textarea { font-family: inherit; }
 
     .progress {
@@ -249,9 +214,11 @@
       margin-bottom: 30px;
     }
 
-    .cta-row { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+    .cta-row { position: relative; z-index: 3; display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
 
     .btn {
+      position: relative;
+      z-index: 3;
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -574,6 +541,13 @@
       border-radius: 50%;
       border: 1px solid rgba(255,255,255,0.14);
       transform: rotateX(65deg);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .cta-box > * {
+      position: relative;
+      z-index: 2;
     }
 
     .cta-box h2 { font-size: clamp(34px, 6vw, 64px); line-height: 0.98; letter-spacing: -2.4px; margin-bottom: 14px; }
@@ -1040,7 +1014,7 @@
       .brand-mark { width: 34px; height: 34px; }
       .scene { padding-top: 105px; }
       h1 { letter-spacing: -2.5px; }
-      .cta-row .btn { width: 100%; }
+      .cta-row .btn { width: 100%; min-height: 58px; }
       .orbital-card { min-height: 360px; transform: none; }
       .planet { width: 240px; height: 240px; }
       .grave-stone { width: 70px; height: 108px; }
@@ -1069,19 +1043,6 @@
   </style>
 </head>
 <body>
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
-    <symbol id="chinarLeaf" viewBox="0 0 80 90">
-      <path d="M40 86 C37 73 27 66 18 57 C7 46 9 31 23 31 C17 19 27 9 38 18 C40 8 53 8 55 20 C68 15 75 30 66 43 C75 47 70 63 55 64 C51 74 45 79 40 86Z" fill="currentColor"/>
-      <path d="M40 84 C40 62 39 42 39 20" stroke="rgba(255,255,255,0.32)" stroke-width="1.3" fill="none"/>
-      <path d="M39 50 C29 45 20 39 14 32 M41 52 C53 45 62 38 70 30 M39 65 C30 62 22 58 14 53 M42 66 C51 62 59 58 68 52" stroke="rgba(255,255,255,0.24)" stroke-width="1" fill="none"/>
-    </symbol>
-  </svg>
-  <div class="chinar-field" aria-hidden="true">
-    <svg class="chinar-leaf"><use href="#chinarLeaf"></use></svg>
-    <svg class="chinar-leaf"><use href="#chinarLeaf"></use></svg>
-    <svg class="chinar-leaf"><use href="#chinarLeaf"></use></svg>
-    <svg class="chinar-leaf"><use href="#chinarLeaf"></use></svg>
-  </div>
   <div class="progress" id="progress"></div>
 
   <nav class="nav" aria-label="Main navigation">
@@ -1102,7 +1063,7 @@
     <header class="scene" id="home">
       <div class="container hero-grid">
         <div class="hero-copy-wrap" data-depth="-80">
-          <div class="eyebrow"><svg class="hero-chinar-mark" aria-hidden="true"><use href="#chinarLeaf"></use></svg><span></span> <span id="copyEyebrow">Grave maintenance done with care and precision.</span></div>
+          <div class="eyebrow"><span></span> <span id="copyEyebrow">Grave maintenance done with care and precision.</span></div>
           <h1><span id="heroTitle" class="gradient-text">Your family's resting place, maintained with dignity.</span></h1>
           <p class="hero-copy" id="heroSubtitle">We clean, align, and restore graves for families who want to keep resting places in proper condition. Send us a WhatsApp message to start.</p>
           <div class="cta-row">
@@ -2288,6 +2249,6 @@
       initAdmin();
     })();
   </script>
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a0c24e4bb81da7c1',t:'MTc4MTUzNDE3NA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a0c29bd39e6d963e',t:'MTc4MTUzNzM0OQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
 </html>
